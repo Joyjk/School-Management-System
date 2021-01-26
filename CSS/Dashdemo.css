@@ -1,0 +1,27 @@
+
+.form-control-primary
+{
+    margin: 0.625em;
+    opacity: 0.2;
+    border-radius: 0.14285714285714285em;
+}
+.sidebar{
+    position: fixed;
+    top: 0em;
+    left: 0em;
+    bottom: 0em;
+    right: 0em;
+    z-index: 100;
+    padding: 5em 0 0 0.7142857142857143em;
+    border-right: 0.07142857142857142em solid wheat;
+}
+.sidebar-left{
+    position: sticky;
+    top: 0em;
+    height: calc(100vh-5em);
+}
+
+
+main{
+    padding-top: 4.5em;
+}

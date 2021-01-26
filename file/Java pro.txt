@@ -1,0 +1,76 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package my_package;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author User
+ */
+public class DbConnection {
+    
+        public  DbConnection()
+        {
+            try
+            {
+                Class.forName("oracle.jdbc.OracleDriver");
+                Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","SCOTT","tiger");
+                
+                java.sql.Statement stmt= con.createStatement(); 
+                String sql= "select * from dept"; 	
+                ResultSet rs = stmt.executeQuery(sql);
+                
+                /*ArrayList<String> ar = new ArrayList<>();
+                ArrayList<String> ar1 = new ArrayList<>();
+                ArrayList<Integer> ar2 = new ArrayList<>();
+                */
+                ArrayList<DeptTable> deptList = new ArrayList<DeptTable>();
+                
+                DeptTable dtable;
+                
+                String dname,loc;
+                int deptno;
+                while(rs.next())
+                {
+		dname = rs.getString("DNAME");
+		loc = rs.getString("LOC");
+		
+		deptno = rs.getInt("DEPTNO");
+		///l1.setText(Name);
+		//ar.add(dname);
+		//ar1.add(loc);
+                //ar2.add(deptno);
+                dtable = new DeptTable(rs.getInt("DEPTNO"),rs.getString("DNAME"),rs.getString("LOC"));
+                deptList.add(dtable);
+                
+		System.out.println(dname+"\t"+loc+"\t"+deptno);
+                 }
+                con.close();
+                
+                /*for(String x: ar)
+                {
+                    System.out.print(x+" ");
+                }*/
+                
+                //DeptTable d = new DeptTable(ar2,ar,ar1);
+                
+                
+                
+	
+            } catch(Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            return deptList;
+            //return null;
+        }
+    
+}

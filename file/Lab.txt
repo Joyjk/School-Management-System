@@ -1,0 +1,70 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Operators1
+{
+
+    class Program
+    {
+        public static void Student_name(string [] name)
+        {
+            
+            Console.WriteLine("Students are: ");
+            foreach(string s in name)
+            {
+                Console.WriteLine(s);
+            }
+
+
+            
+        }
+        public static void Check(string[] Aname)
+        {
+
+            Console.WriteLine("The Name Contains A or a ");
+
+            foreach (string s in Aname)
+            {
+                //Console.WriteLine(s);
+                if (s.Contains("A") == true || s.Contains("a") == true)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+        }
+        public static void Check2(string [] Sname)
+        {
+            foreach(string s in Sname)
+            {
+                if(s.StartsWith("S")||s.StartsWith("s"))
+                {
+                    Console.WriteLine(s);
+                }
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            
+
+            string[] name = new string[10];
+            Console.WriteLine("Enter Student name: ");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write("Name {0}: ", i);
+                name[i] = Console.ReadLine();
+            }
+            Student_name(name);
+            Check(name);
+            Check2(name);
+
+        }
+
+
+    }
+    
+}
